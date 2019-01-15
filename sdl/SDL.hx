@@ -1155,10 +1155,10 @@ extern class SDL {
     static function GL_SwapWindow(window:Window) : Void;
 
     @:native('SDL_GL_SetSwapInterval')
-    static function GL_SetSwapInterval(interval:Bool) : Int;
+    static function GL_SetSwapInterval(interval:Int) : Int;
 
     @:native('SDL_GL_GetSwapInterval')
-    static function GL_GetSwapInterval() : Bool;
+    static function GL_GetSwapInterval() : Int;
 
     @:native('SDL_GL_ResetAttributes')
     static function GL_ResetAttributes() : Void;

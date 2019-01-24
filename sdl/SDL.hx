@@ -32,6 +32,12 @@ extern class SDL {
 //:note:differences:
 // - vargs type functions : use haxe string interpolation instead
 
+// Locale patch
+
+    /** Expose this method to be able to patch locale as Std.parseFloat() may break otherwise. */
+    @:native('linc::sdl::setLCNumericCLocale')
+    static function setLCNumericCLocale():Void;
+
 //SDL.h
 
     @:native('SDL_Init')

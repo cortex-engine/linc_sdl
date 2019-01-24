@@ -30,6 +30,10 @@ namespace linc {
 
     namespace sdl {
 
+        void setLCNumericCLocale() {
+            setlocale(LC_NUMERIC, "C");
+        }
+
             // return { window:cpp.Pointer<SDL_Window>, renderer:cpp.Pointer<SDL_Renderer> }
         Dynamic createWindowAndRenderer(int x, int y, int flags) {
 

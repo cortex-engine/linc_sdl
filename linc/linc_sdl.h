@@ -4,6 +4,8 @@
 #include <hxcpp.h>
 #endif
 
+#include <locale.h>
+
 #define SDL_MAIN_HANDLED 1
 #include "../lib/sdl/include/SDL.h"
 
@@ -29,6 +31,7 @@ namespace linc {
 
             } //convert
 
+            extern void setLCNumericCLocale();
             extern Dynamic createWindowAndRenderer(int x, int y, int flags);
             extern ::String REVISION();
             extern Dynamic VERSION();

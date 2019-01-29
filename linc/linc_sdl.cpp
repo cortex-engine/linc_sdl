@@ -9,6 +9,7 @@
 #if defined(LINC_SDL_WITH_SDL_MAIN)
 
     extern "C" { void hxcpp_main(); }
+    extern "C" __attribute__((visibility("default"))) int SDL_main(int argc, char** argv);
     int SDL_main(int argc, char *argv[]) {
         
         #if !defined(LINC_SDL_NO_HXCPP_MAIN_CALL) 

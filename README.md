@@ -48,7 +48,7 @@ class Example {
             SDL.delay(33);
         }
 
-    } //main
+    }
 
     static function update() {
 
@@ -64,7 +64,7 @@ class Example {
 
         return true;
 
-    } //update
+    }
 
-} //Example
+}
 ```

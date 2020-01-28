@@ -240,7 +240,7 @@ class Test {
         //Also, -Wformat-security is complaining because the fmt string is used.
         // SDL.log('init');
 
-    } //init
+    }
 
     static var has_timer = false;
     static function timer(interval:Int, data:{someint:Int}):Int {
@@ -252,7 +252,7 @@ class Test {
             //return 0 to end the timer
         return 0;
 
-    } //timer
+    }
 
     static var timer_start:Int = 0;
     static function process_events() {
@@ -331,7 +331,7 @@ class Test {
 
         return true;
 
-    } //process_events
+    }
 
     static var hover = true;
 
@@ -348,7 +348,7 @@ class Test {
 
         } //while(updating)
 
-    } //loop
+    }
 
     static function versions() {
         //https://wiki.libsdl.org/SDL_GetVersion#Code_Examples
@@ -371,7 +371,7 @@ class Test {
 
         trace('    - clipboard after: ' + SDL.getClipboardText());
 
-    } //versions
+    }
 
     static function renderinfo() {
 
@@ -387,7 +387,7 @@ class Test {
         trace('    - Output Size: ' + SDL.getRendererOutputSize(state.renderer, {w:0, h:0}));
         trace('    - Render target support: ' + SDL.renderTargetSupported(state.renderer));
 
-    } //renderinfo
+    }
 
     static function rendercolor(v) {
 
@@ -395,7 +395,7 @@ class Test {
         trace('Color: $v');
         trace('    ' + SDL.getRenderDrawColor(state.renderer, into));
 
-    } //rendercolor
+    }
 
     static function blends() {
 
@@ -420,7 +420,7 @@ class Test {
 
         printmode('blend', SDL.getRenderDrawBlendMode(state.renderer));
 
-    } //blends
+    }
 
     static function cleanup() {
 
@@ -430,6 +430,6 @@ class Test {
         SDL.destroyRenderer(state.renderer);
         SDL.quit();
 
-    } //cleanup
+    }
 
 }

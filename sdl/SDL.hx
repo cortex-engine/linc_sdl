@@ -424,14 +424,14 @@ extern class SDL {
             var nxt = points[i*2+1];
             renderDrawLine(renderer, cur.x, cur.y, nxt.x, nxt.y);
         }
-    } //renderDrawLines
+    }
 
     @:native('SDL_RenderDrawPoint')
     static function renderDrawPoint(renderer:Renderer, x:Int, y:Int):Int;
 
     static inline function renderDrawPoints(renderer:Renderer, points:Array<SDLPoint>):Void {
         for(p in points) renderDrawPoint(renderer, p.x, p.y);
-    } //renderDrawPoints
+    }
 
     @:native('linc::sdl::renderDrawRect')
     static function renderDrawRect(renderer:Renderer, rect:SDLRect):Int;
@@ -1189,7 +1189,7 @@ extern class SDL {
 
             SDL_helper.iOS_set_callback(window, interval, callback, userdata);
 
-        } //iPhoneSetAnimationCallback
+        }
 
         //internal
         @:native('linc::sdl::init_ios_callback')
@@ -1248,7 +1248,7 @@ extern class SDL {
     @:native('linc::sdl::init_timer')
     private static function init_timer(func:cpp.Callable<Int->Int>):Void;
 
-} //SDL
+}
 
 typedef SDLTimerCallback = UInt->Dynamic->Int;
 private typedef InternalTimerInfo = {
@@ -1303,7 +1303,7 @@ private class SDL_helper {
 
             return _timerid;
 
-        } //add_timer
+        }
 
         static function remove_timer(_timerid:Int):Bool {
 
@@ -1319,7 +1319,7 @@ private class SDL_helper {
 
             return _result;
 
-        } //remove_timer
+        }
 
         static function timer_callback(_timerid:Int) : Int {
 
@@ -1330,7 +1330,7 @@ private class SDL_helper {
 
             return 0;
 
-        } //timer_callback
+        }
 
 #if (ios || tvos)
     //iOS animation callbacks
@@ -1346,7 +1346,7 @@ private class SDL_helper {
             @:privateAccess SDL.init_ios_callback(window, interval, cpp.Callable.fromStaticFunction(iOS_callback_handler));
         }
 
-    } //iOS_set_callback
+    }
 
     static function iOS_callback_handler() {
 
@@ -1354,7 +1354,7 @@ private class SDL_helper {
             iOS_callback_data.fn(iOS_callback_data.userdata);
         }
 
-    } //iOS_callback_handler
+    }
 
 #end
 
@@ -1381,7 +1381,7 @@ private class SDL_helper {
 
             return _watchid;
 
-        } //add_event_watch
+        }
 
         static function del_event_watch(func:SDLEventFilter) {
 
@@ -1400,7 +1400,7 @@ private class SDL_helper {
             @:privateAccess SDL.del_event_watch(_found.watchid);
             _found = null;
 
-        } //del_event_watch
+        }
 
         static function event_watch_callback(_watchid:Int, _event:sdl.Event.EventRef) : Int {
 
@@ -1411,10 +1411,10 @@ private class SDL_helper {
 
             return 1;
 
-        } //event_watch_callback
+        }
 
 
-} //SDL_helper
+}
 
 typedef SDLEventFilter = Dynamic->sdl.Event->Int;
 
@@ -1463,7 +1463,7 @@ from Int to Int {
     var SDL_INIT_EVENTS            = 0x00004000;
     var SDL_INIT_EVERYTHING        = 0x00000001 | 0x00000010 | 0x00000020 | 0x00004000 | 0x00000200 | 0x00001000 | 0x00002000;
 
-} //SDLInitFlags
+}
 
 @:enum
 abstract SDLHint(String) 
@@ -1513,14 +1513,14 @@ abstract SDLHint(String)
         var SDL_HINT_NO_SIGNAL_HANDLERS =                       "SDL_NO_SIGNAL_HANDLERS";
         var SDL_HINT_WINDOWS_NO_CLOSE_ON_ALT_F4 =               "SDL_WINDOWS_NO_CLOSE_ON_ALT_F4";
 
-} //SDLHint
+}
 
 @:enum
 abstract SDLWindowPos(Int)
 from Int to Int {
     var SDL_WINDOWPOS_UNDEFINED = 0|0x1FFF0000;
     var SDL_WINDOWPOS_CENTERED = 0|0x2FFF0000;
-} //SDLWindowPos
+}
 
 #if android
 @:enum
@@ -1528,7 +1528,7 @@ abstract SDLExternalStorageState(Int)
 from Int to Int {
     var SDL_ANDROID_EXTERNAL_STORAGE_READ  = 0x01;
     var SDL_ANDROID_EXTERNAL_STORAGE_WRITE = 0x02;
-} //SDLExternalStorageState
+}
 #end
 
 @:enum
@@ -1541,7 +1541,7 @@ from Int to Int {
     var SDL_LOG_PRIORITY_ERROR      = 5;
     var SDL_LOG_PRIORITY_CRITICAL   = 6;
     var SDL_NUM_LOG_PRIORITIES      = 7;
-} //SDLLogPriority
+}
 
 @:enum
 abstract SDLLogCategory(Int)
@@ -1566,7 +1566,7 @@ from Int to Int {
     // SDL_LOG_CATEGORY_RESERVED9    = 17;
     // SDL_LOG_CATEGORY_RESERVED10   = 18;
     var SDL_LOG_CATEGORY_CUSTOM      = 19;
-} //SDLLogCategory
+}
 
 @:enum
 abstract SDLRendererFlags(Int)
@@ -1579,7 +1579,7 @@ from Int to Int {
                                                           with the refresh rate */
     var SDL_RENDERER_TARGETTEXTURE  = 0x00000008;       /**< The renderer supports
                                                           rendering to texture */
-} //SDLRendererFlags
+}
 
 @:enum
 abstract SDLBlendMode(Int)
@@ -1596,7 +1596,7 @@ from Int to Int {
     var SDL_BLENDMODE_MOD = 0x00000004;      /**< color modulate
                                               dstRGB = srcRGB * dstRGB
                                               dstA = dstA */
-} //SDLBlendMode
+}
 
 @:enum
 abstract SDLPixelFormat(Int)
@@ -1639,7 +1639,7 @@ from Int to Int {
     var SDL_PIXELFORMAT_YVYU        = 0x55595659;
     var SDL_PIXELFORMAT_NV12        = 0x3231564E;
     var SDL_PIXELFORMAT_NV21        = 0x3132564E;
-} //SDLPixelFormat
+}
 
 @:enum
 abstract SDLTextureAccess(Int)
@@ -1647,7 +1647,7 @@ from Int to Int {
     var SDL_TEXTUREACCESS_STATIC    = 0;  /**< Changes rarely, not lockable */
     var SDL_TEXTUREACCESS_STREAMING = 1;  /**< Changes frequently, lockable */
     var SDL_TEXTUREACCESS_TARGET    = 2;  /**< Texture can be used as a render target */
-} //SDLTextureAccess
+}
 
 
 @:enum
@@ -1656,7 +1656,7 @@ from Int to Int {
     var SDL_THREAD_PRIORITY_LOW = 0;
     var SDL_THREAD_PRIORITY_NORMAL = 1;
     var SDL_THREAD_PRIORITY_HIGH = 2;
-} //SDLThreadPriority
+}
 
 @:enum
 abstract SDLRenderFlip(Int)
@@ -1664,7 +1664,7 @@ from Int to Int {
     var SDL_FLIP_NONE = 0x00000000;
     var SDL_FLIP_HORIZONTAL = 0x00000001;
     var SDL_FLIP_VERTICAL = 0x00000002;
-} //SDLRenderFlip
+}
 
 
 
@@ -1675,7 +1675,7 @@ from Int to Int {
     var SDL_IGNORE = 0;
     var SDL_DISABLE = 0;
     var SDL_ENABLE = 1;
-} //SDLEventState
+}
 
 
 @:enum
@@ -1705,7 +1705,7 @@ from Int to Int {
     var SDL_GL_CONTEXT_PROFILE_MASK         = 21;
     var SDL_GL_SHARE_WITH_CURRENT_CONTEXT   = 22;
     var SDL_GL_FRAMEBUFFER_SRGB_CAPABLE     = 23;
-} //SDLGLAttr
+}
 
 @:enum
 abstract SDLGLprofile(Int)
@@ -1735,7 +1735,7 @@ from Int to Int {
     var SDL_CONTROLLER_BUTTON_DPAD_LEFT     = 13;
     var SDL_CONTROLLER_BUTTON_DPAD_RIGHT    = 14;
     var SDL_CONTROLLER_BUTTON_MAX           = 15;
-} //SDLGameControllerButton
+}
 
 
 
@@ -1750,7 +1750,7 @@ from Int to Int {
     var SDL_CONTROLLER_AXIS_TRIGGERLEFT     = 4;
     var SDL_CONTROLLER_AXIS_TRIGGERRIGHT    = 5;
     var SDL_CONTROLLER_AXIS_MAX             = 6;
-} //SDLGameControllerAxis
+}
 
 
 @:enum
@@ -1759,7 +1759,7 @@ from Int to Int {
     var SDL_ADDEVENT  = 0;
     var SDL_PEEKEVENT = 1;
     var SDL_GETEVENT  = 2;
-} //SDLEventAction
+}
 
 @:enum
 abstract SDLMessageBoxFlags(Int)
@@ -1767,7 +1767,7 @@ from Int to Int {
     var SDL_MESSAGEBOX_ERROR        = 0x00000010;
     var SDL_MESSAGEBOX_WARNING      = 0x00000020;
     var SDL_MESSAGEBOX_INFORMATION  = 0x00000040;
-} //SDLMessageBoxFlags
+}
 
 @:enum
 abstract SDLKeymod(Int)
@@ -1789,7 +1789,7 @@ from Int to Int {
     var KMOD_SHIFT      = 0x0001|0x0002;
     var KMOD_ALT        = 0x0100|0x0200;
     var KMOD_GUI        = 0x0400|0x0800;
-} //SDLKeymod
+}
 
 
 
@@ -1805,7 +1805,7 @@ from Int to Int {
     var SDL_HAT_RIGHTDOWN =   0x02|0x04;
     var SDL_HAT_LEFTUP =      0x08|0x01;
     var SDL_HAT_LEFTDOWN =    0x08|0x04;
-} //SDLHatValue
+}
 
 
 @:enum
@@ -1826,7 +1826,7 @@ from Int to Int {
     var SDL_WINDOWEVENT_FOCUS_GAINED  = 12;/**< Window has gained keyboard focus */
     var SDL_WINDOWEVENT_FOCUS_LOST    = 13;/**< Window has lost keyboard focus */
     var SDL_WINDOWEVENT_CLOSE         = 14;/**< The window manager requests that the window be closed */
-} //SDLWindowEventID
+}
 
 @:enum
 abstract SDLEventType(UInt)
@@ -1925,7 +1925,7 @@ from UInt to UInt {
      */
     var SDL_LASTEVENT    = 0xFFFF;
 
-} //SDLEventType
+}
 
 
 @:enum
@@ -1944,7 +1944,7 @@ from Int to Int {
     var SDL_SYSTEM_CURSOR_NO        = 10;  /**< Slashed circle or crossbones */
     var SDL_SYSTEM_CURSOR_HAND      = 11;  /**< Hand */
     var SDL_NUM_SYSTEM_CURSORS      = 12;
-} //SDLSystemCursor
+}
 
 @:enum
 abstract SDLWindowFlags(Int)
@@ -1965,7 +1965,7 @@ from Int to Int {
     var SDL_WINDOW_FOREIGN              = 0x00000800;       /**< window not created by SDL */
     var SDL_WINDOW_ALLOW_HIGHDPI        = 0x00002000;       /**< window should be created in high-DPI mode if supported */
     var SDL_WINDOW_MOUSE_CAPTURE        = 0x00004000;       /**< window has mouse captured (unrelated to INPUT_GRABBED) */
-} //SDLWindowFlags
+}
 
 typedef SDLKeycode = UInt;
 typedef SDLScancode = UInt;

@@ -9,7 +9,7 @@ class Keycodes {
 
         return (scancode | Scancodes.MASK);
 
-    } //from_scan
+    }
 
         /** Convert a keycode to a scancode if possible.
             NOTE - this will only map a large % but not all keys,
@@ -106,7 +106,7 @@ class Keycodes {
 
         return Scancodes.unknown;
 
-    } //to_scan
+    }
 
         /** Convert a keycode to string */
     public static function name( keycode : Int ) : String {
@@ -134,11 +134,11 @@ class Keycodes {
 
                 return decoder.toString();
 
-            } //default
+            }
 
         } //switch(keycode)
 
-    } //name
+    }
 
     public static inline var unknown : Int              = 0;
 
@@ -392,7 +392,7 @@ class Keycodes {
     public static inline var eject : Int                = from_scan(Scancodes.eject);
     public static inline var sleep : Int                = from_scan(Scancodes.sleep);
 
-} //Keycodes
+}
 
 
 /** The scancode class. The values below come directly from SDL header include files,
@@ -410,7 +410,7 @@ class Scancodes {
 
         return res != null ? res : "";
 
-    } //name
+    }
 
         //special value remains caps
     public static inline var MASK:Int                      = (1<<30);
@@ -1012,5 +1012,5 @@ class Scancodes {
         "Sleep",
     ]; //scancode names
 
-} //Scancodes
+}
 

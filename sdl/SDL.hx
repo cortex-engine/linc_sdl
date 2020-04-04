@@ -1083,6 +1083,24 @@ extern class SDL {
     @:native('SDL_GetNumDisplayModes')
     static function getNumDisplayModes(displayIndex:Int):Int;
 
+    static inline function getDisplayDPI(displayIndex:Int, dpiInfo:Array<cpp.Float32>) : Int {
+        var defaultDpi:Float = 72.0; // mac & if nothing is found
+        #if windows
+        defaultDpi = 96.0;
+        #end
+        dpiInfo[0] = 0;
+        dpiInfo[1] = 0;
+        dpiInfo[2] = 0;
+        dpiInfo[3] = defaultDpi;
+        var result:Int = untyped __cpp__("SDL_GetDisplayDPI({0}, (float*)&({1}[0]), (float*)&({1}[1]), (float*)&({1}[2]))", displayIndex, dpiInfo);
+        if (result != 0) {
+            dpiInfo[0] = defaultDpi;
+            dpiInfo[1] = defaultDpi;
+            dpiInfo[2] = defaultDpi;
+        }
+        return result;
+    }
+
     @:native('linc::sdl::getDisplayMode')
     static function getDisplayMode(displayIndex:Int, modeIndex:Int) : SDLDisplayMode;
 

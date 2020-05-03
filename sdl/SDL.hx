@@ -1928,6 +1928,9 @@ from UInt to UInt {
 
     /* Drag and drop events */
     var SDL_DROPFILE        = 0x1000; /**< The system requests a file open */
+    var SDL_DROPTEXT        = 0x1001;
+    var SDL_DROPBEGIN       = 0x1002;
+    var SDL_DROPCOMPLETE    = 0x1003;
 
     /* Render events */
     var SDL_RENDER_TARGETS_RESET = 0x2000; /**< The render targets have been reset and their contents need to be updated */

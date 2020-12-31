@@ -1,6 +1,6 @@
 <xml>
     <set name="NATIVE_TOOLKIT_PATH" value="${LINC_SDL_PATH}lib" />
-    <set name="NATIVE_TOOLKIT_SDL_STATIC" value="1" if="android"/>
+    <set name="NATIVE_TOOLKIT_SDL_STATIC" value="1" if="android || ios"/>
     <include name="${LINC_SDL_PATH}lib/sdl/files.xml"/>
 
     <set name="MACOSX_DEPLOYMENT_TARGET" value="10.6" if="mac" unless="MACOSX_DEPLOYMENT_TARGET"/>

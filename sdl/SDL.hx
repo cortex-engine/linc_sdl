@@ -1129,6 +1129,28 @@ extern class SDL {
     @:native('SDL_SetWindowFullscreen')
     static function setWindowFullscreen(window:Window, flags:SDLWindowFlags) : Int;
 
+    #if mac
+    static inline function setWindowFullscreenSpace(window:Window, state:Bool) : Bool {
+        var _state:Int = state ? 1 : 0;
+        var _result:Int = untyped __cpp__('(int) Cocoa_SetWindowFullscreenSpace({0}, (SDL_bool){1})', window, _state);
+        return _result != 0 ? true : false;
+    }
+
+    static inline function isWindowInFullscreenSpace(window:Window) : Bool {
+        var _result:Int = untyped __cpp__('(int) Cocoa_IsWindowInFullscreenSpace({0})', window);
+        return _result != 0 ? true : false;
+    }
+    #end
+
+    @:native('SDL_MaximizeWindow')
+    static function maximizeWindow(window:Window) : Int;
+
+    @:native('SDL_MinimizeWindow')
+    static function minimizeWindow(window:Window) : Int;
+
+    @:native('SDL_RestoreWindow')
+    static function restoreWindow(window:Window) : Int;
+
     static inline function setWindowBordered(window:Window, bordered:Bool) : Void {
         var _enable = bordered ? 1 : 0;
         untyped __cpp__('SDL_SetWindowBordered({0}, (SDL_bool){1})', window, _enable);

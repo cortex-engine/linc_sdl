@@ -11,8 +11,8 @@
     extern "C" { void hxcpp_main(); }
     extern "C" __attribute__((visibility("default"))) int SDL_main(int argc, char** argv);
     int SDL_main(int argc, char *argv[]) {
-        
-        #if !defined(LINC_SDL_NO_HXCPP_MAIN_CALL) 
+
+        #if !defined(LINC_SDL_NO_HXCPP_MAIN_CALL)
             SDL_Log("Calling hxcpp_main() from SDL_main!");
             hxcpp_main();
         #endif
@@ -20,7 +20,7 @@
         #if !defined(LINC_SDL_NO_EXIT_CALL)
             SDL_Log("Calling exit() from SDL_main!");
             exit(0);
-        #endif 
+        #endif
 
         return 0;
     }
@@ -399,8 +399,8 @@ namespace linc {
 
         } //renderSetViewport
 
-        SDL_Surface* createRGBSurfaceFrom(Array<unsigned char> pixels, 
-            int width, int height, int depth, int pitch, 
+        SDL_Surface* createRGBSurfaceFrom(Array<unsigned char> pixels,
+            int width, int height, int depth, int pitch,
             int Rmask, int Gmask, int Bmask, int Amask) {
 
             return SDL_CreateRGBSurfaceFrom((void*)&pixels[0], width, height, depth, pitch, Rmask, Gmask, Bmask, Amask);
@@ -686,7 +686,7 @@ namespace linc {
 
             void init_event_watch( InternalEventFilterFN fn ) {
 
-                event_watch_fn = fn;                    
+                event_watch_fn = fn;
 
             } //init_event_watch
 
@@ -705,7 +705,7 @@ namespace linc {
                     return 1;
                 }
 
-                #if defined(ANDROID) 
+                #if defined(ANDROID)
                     AutoHaxe haxe("linc::sdl::InternalEventWatch");
                 #endif
 
@@ -715,7 +715,7 @@ namespace linc {
             } //InternalEventWatch
 
             int addEventWatch() {
-                
+
                 int watch_id = event_watch_seq;
                 int* watch_userdata = new int;
                 *watch_userdata = watch_id;
@@ -733,14 +733,14 @@ namespace linc {
             void delEventWatch( int watchID ) {
 
                 int* watch_userdata = event_watch_list[watchID];
-                    
-                    //in our case removing a null pointer 
+
+                    //in our case removing a null pointer
                     //event watch callback doesn't match our expectation
                 if(watch_userdata) {
 
                     SDL_DelEventWatch(InternalEventWatch, watch_userdata);
 
-                    delete watch_userdata; 
+                    delete watch_userdata;
                     watch_userdata = 0;
 
                 }
@@ -760,7 +760,7 @@ namespace linc {
 
             static Uint32 InternalTimerCallback(Uint32 interval, void *param) {
 
-                #if defined(ANDROID) 
+                #if defined(ANDROID)
                     AutoHaxe haxe("linc::sdl::InternalTimerCallback");
                 #endif
 
@@ -787,9 +787,9 @@ namespace linc {
             bool removeTimer( int timerID ) {
 
                 int* timer_userdata = timer_list[timerID];
-                
+
                 if(timer_userdata) {
-                    delete timer_userdata; 
+                    delete timer_userdata;
                     timer_userdata = 0;
                 }
 
@@ -834,12 +834,15 @@ namespace linc {
 
             static void InternaliOSCallback(void* userdata) {
 
+                int haxe_stack_ = 99;
+                hx::SetTopOfStack(&haxe_stack_, false);
+
                 ios_fn();
 
             } //InternaliOSCallback
 
             void init_ios_callback( SDL_Window* window, int interval, InternaliOSCallbackFN fn ) {
-                
+
                 ios_fn = fn;
                 SDL_iPhoneSetAnimationCallback(window, interval, InternaliOSCallback, NULL);
 

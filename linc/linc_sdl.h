@@ -69,6 +69,7 @@ namespace linc {
             extern int renderReadPixels(SDL_Renderer* renderer, Dynamic rect, int format, Array<unsigned char> dest, int pitch);
             extern int renderSetClipRect(SDL_Renderer* renderer, Dynamic rect);
             extern int renderSetViewport(SDL_Renderer* renderer, Dynamic rect);
+            extern bool byteOrderIsBigEndian();
             extern SDL_Surface* createRGBSurfaceFrom(Array<unsigned char> pixels, int width, int height, int depth, int pitch, int Rmask, int Gmask, int Bmask, int Amask);
             extern int blitSurface(SDL_Surface* src, Dynamic srcrect, SDL_Surface* dst, Dynamic dstrect);
             extern SDL_Cursor* createSystemCursor(int id);

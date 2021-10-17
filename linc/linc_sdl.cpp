@@ -399,6 +399,14 @@ namespace linc {
 
         } //renderSetViewport
 
+        bool byteOrderIsBigEndian() {
+#if SDL_BYTEORDER == SDL_BIG_ENDIAN
+            return true;
+#else
+            return false;
+#endif
+        }
+
         SDL_Surface* createRGBSurfaceFrom(Array<unsigned char> pixels,
             int width, int height, int depth, int pitch,
             int Rmask, int Gmask, int Bmask, int Amask) {

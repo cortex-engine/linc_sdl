@@ -2,16 +2,16 @@ package sdl;
 
 import haxe.io.Bytes;
 import haxe.io.BytesData;
+import sdl.Cursor;
+import sdl.GLContext;
+import sdl.Haptic;
+import sdl.Joystick;
+import sdl.RWops;
 import sdl.Renderer;
 import sdl.Surface;
-import sdl.Cursor;
 import sdl.Texture;
-import sdl.Joystick;
-import sdl.Window;
-import sdl.GLContext;
 import sdl.Thread;
-import sdl.RWops;
-import sdl.Haptic;
+import sdl.Window;
 
 
 @:keep
@@ -332,6 +332,9 @@ extern class SDL {
 
     @:native('SDL_UpdateWindowSurface')
     static function updateWindowSurface(window:Window) : Int;
+
+    @:native('linc::sdl::byteOrderIsBigEndian')
+    static function byteOrderIsBigEndian() : Bool;
 
     @:native('linc::sdl::createRGBSurfaceFrom')
     static function createRGBSurfaceFrom(pixels:BytesData, width:Int, height:Int, depth:Int, pitch:Int, Rmask:Int, Gmask:Int, Bmask:Int, Amask:Int) : Surface;
@@ -1506,7 +1509,7 @@ from Int to Int {
 }
 
 @:enum
-abstract SDLHint(String) 
+abstract SDLHint(String)
     from String to String {
 
         var SDL_HINT_FRAMEBUFFER_ACCELERATION =                 "SDL_FRAMEBUFFER_ACCELERATION";

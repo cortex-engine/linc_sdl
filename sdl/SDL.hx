@@ -777,6 +777,41 @@ extern class SDL {
     // @:native('SDL_GameControllerGetStringForButton')
     // static function gameControllerGetStringForButton():Int;
 
+    static inline function gameControllerSetSensorEnabled(gamecontroller:GameController, type:SDLSensorType, enabled:Bool):Int {
+        untyped __cpp__('SDL_SensorType sensorType_ = SDL_SENSOR_INVALID;');
+        switch type {
+            case SDL_SENSOR_INVALID:
+                untyped __cpp__('sensorType_ = SDL_SENSOR_INVALID;');
+            case SDL_SENSOR_UNKNOWN:
+                untyped __cpp__('sensorType_ = SDL_SENSOR_UNKNOWN;');
+            case SDL_SENSOR_ACCEL:
+                untyped __cpp__('sensorType_ = SDL_SENSOR_ACCEL;');
+            case SDL_SENSOR_GYRO:
+                untyped __cpp__('sensorType_ = SDL_SENSOR_GYRO;');
+        }
+        return untyped __cpp__('SDL_GameControllerSetSensorEnabled({0}, sensorType_, {1} ? SDL_TRUE : SDL_FALSE)', gamecontroller, enabled);
+    }
+
+    static inline function gameControllerGetSensorData(gamecontroller:GameController, type:SDLSensorType, data:Array<Float>, num_values:Int):Int {
+        untyped __cpp__('float data_[16] = { 0.f }');
+        untyped __cpp__('SDL_SensorType sensorType_ = SDL_SENSOR_INVALID;');
+        switch type {
+            case SDL_SENSOR_INVALID:
+                untyped __cpp__('sensorType_ = SDL_SENSOR_INVALID;');
+            case SDL_SENSOR_UNKNOWN:
+                untyped __cpp__('sensorType_ = SDL_SENSOR_UNKNOWN;');
+            case SDL_SENSOR_ACCEL:
+                untyped __cpp__('sensorType_ = SDL_SENSOR_ACCEL;');
+            case SDL_SENSOR_GYRO:
+                untyped __cpp__('sensorType_ = SDL_SENSOR_GYRO;');
+        }
+		var result:Int = untyped __cpp__('SDL_GameControllerGetSensorData({0}, sensorType_, data_, {1})', gamecontroller, num_values);
+        for (i in 0...num_values) {
+            data[i] = untyped __cpp__('data_[{0}]', i);
+        }
+        return result;
+    }
+
     @:native('SDL_GameControllerMapping')
     private static function _gameControllerMapping(gamecontroller:GameController):cpp.ConstCharStar;
     static inline function gameControllerMapping(gamecontroller:GameController):String return _gameControllerMapping(gamecontroller).toString();
@@ -1504,7 +1539,8 @@ from Int to Int {
     var SDL_INIT_HAPTIC            = 0x00001000;
     var SDL_INIT_GAMECONTROLLER    = 0x00002000;  /**< SDL_INIT_GAMECONTROLLER implies SDL_INIT_JOYSTICK */
     var SDL_INIT_EVENTS            = 0x00004000;
-    var SDL_INIT_EVERYTHING        = 0x00000001 | 0x00000010 | 0x00000020 | 0x00004000 | 0x00000200 | 0x00001000 | 0x00002000;
+    var SDL_INIT_SENSOR            = 0x00008000;
+    var SDL_INIT_EVERYTHING        = 0x00000001 | 0x00000010 | 0x00000020 | 0x00004000 | 0x00000200 | 0x00001000 | 0x00002000 | 0x00008000;
 
 }
 
@@ -1795,6 +1831,16 @@ from Int to Int {
     var SDL_CONTROLLER_AXIS_MAX             = 6;
 }
 
+@:enum
+abstract SDLSensorType(Int)
+from Int to Int
+{
+    var SDL_SENSOR_INVALID = -1;        /**< Returned for an invalid sensor */
+    var SDL_SENSOR_UNKNOWN = 0;         /**< Unknown sensor type */
+    var SDL_SENSOR_ACCEL = 1;           /**< Accelerometer */
+    var SDL_SENSOR_GYRO = 2;            /**< Gyroscope */
+}
+
 
 @:enum
 abstract SDLEventAction(Int)
@@ -1937,6 +1983,10 @@ from UInt to UInt {
     var SDL_CONTROLLERDEVICEADDED       = 0x653; /**< A new Game controller has been inserted into the system */
     var SDL_CONTROLLERDEVICEREMOVED     = 0x654; /**< An opened Game controller has been removed */
     var SDL_CONTROLLERDEVICEREMAPPED    = 0x655; /**< The controller mapping was updated */
+    var SDL_CONTROLLERTOUCHPADDOWN      = 0x656; /**< Game controller touchpad was touched */
+    var SDL_CONTROLLERTOUCHPADMOTION    = 0x657; /**< Game controller touchpad finger was moved */
+    var SDL_CONTROLLERTOUCHPADUP        = 0x658; /**< Game controller touchpad finger was lifted */
+    var SDL_CONTROLLERSENSORUPDATE      = 0x659; /**< Game controller sensor was updated */
 
     /* Touch events */
     var SDL_FINGERDOWN      = 0x700;

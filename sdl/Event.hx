@@ -1,6 +1,7 @@
 package sdl;
 
 import sdl.SDL.SDLEventType;
+import sdl.SDL.SDLSensorType;
 
 @:keep @:include('linc_sdl.h') @:native("SDL_Event")
 private extern class SDLEvent {
@@ -20,6 +21,7 @@ private extern class SDLEvent {
     var caxis:ControllerAxisEvent;
     var cbutton:ControllerButtonEvent;
     var cdevice:ControllerDeviceEvent;
+    var csensor:ControllerSensorEvent;
     var adevice:AudioDeviceEvent;
     var quit:QuitEvent;
     // var user:UserEvent;
@@ -193,6 +195,16 @@ extern class ControllerDeviceEvent {
     var type: SDLEventType;
     var timestamp: Float;
     var which: Int;
+}
+
+@:structAccess
+@:include('linc_sdl.h') @:native("::cpp::Struct<SDL_ControllerSensorEvent>")
+extern class ControllerSensorEvent {
+    var type: SDLEventType;
+    var timestamp: Float;
+    var which: Int;
+    var sensor: SDLSensorType;
+    var data: cpp.RawPointer<cpp.Float32>;
 }
 
 @:structAccess

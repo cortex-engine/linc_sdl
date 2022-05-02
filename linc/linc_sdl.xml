@@ -1,19 +1,18 @@
 <xml>
     <set name="NATIVE_TOOLKIT_PATH" value="${LINC_SDL_PATH}lib" />
     <set name="NATIVE_TOOLKIT_SDL_STATIC" value="1" if="android || ios"/>
-    <include name="${LINC_SDL_PATH}lib/sdl/files.xml"/>
+    <include name="${LINC_SDL_PATH}lib/sdl/files.xml" unless="linux"/>
 
     <set name="MACOSX_DEPLOYMENT_TARGET" value="10.6" if="mac" unless="MACOSX_DEPLOYMENT_TARGET"/>
 
     <files id='haxe'>
 
         <compilerflag value='-DLINC_SDL'/>
-        <compilerflag value='-DLINC_SDL_WITH_SDL_MAIN'                               if="android"/>
+        <compilerflag value='-DLINC_SDL_WITH_SDL_MAIN'                              if="android"/>
 
         <compilerflag value='-I${LINC_SDL_PATH}linc/'/>
-        <compilerflag value='-I${LINC_SDL_PATH}lib/sdl/include/'/>
+        <compilerflag value='-I${LINC_SDL_PATH}lib/sdl/include/'                    unless='linux'/>
         <compilerflag value='-I${LINC_SDL_PATH}lib/sdl/include/configs/default/'    unless='windows || mac || linux'/>
-        <compilerflag value='-I${LINC_SDL_PATH}lib/sdl/include/configs/linux/'      if='linux'/>
         <compilerflag value='-I${LINC_SDL_PATH}lib/sdl/include/configs/windows/'    if='windows'/>
         <compilerflag value='-I${LINC_SDL_PATH}lib/sdl/include/configs/mac/'        if='mac'/>
 
@@ -29,9 +28,8 @@
 
     <files id="__main__">
         <compilerflag value='-I${LINC_SDL_PATH}linc/'/>
-        <compilerflag value='-I${LINC_SDL_PATH}lib/sdl/include/'/>
+        <compilerflag value='-I${LINC_SDL_PATH}lib/sdl/include/'                    unless='linux'/>
         <compilerflag value='-I${LINC_SDL_PATH}lib/sdl/include/configs/default/'    unless='windows || mac || linux'/>
-        <compilerflag value='-I${LINC_SDL_PATH}lib/sdl/include/configs/linux/'      if='linux'/>
         <compilerflag value='-I${LINC_SDL_PATH}lib/sdl/include/configs/windows/'    if='windows'/>
         <compilerflag value='-I${LINC_SDL_PATH}lib/sdl/include/configs/mac/'        if='mac'/>
     </files>
@@ -39,7 +37,10 @@
     <target id="haxe">
 
             <!-- include sdl library code into the build -->
-        <files id="native-toolkit-sdl" unless="linc_sdl_prebuilt"/>
+        <files id="native-toolkit-sdl" unless="linc_sdl_prebuilt || linux"/>
+
+            <!-- on linux, use globally installed SDL -->
+        <lib name="-lSDL2" if="linux"/>
 
             <!-- You could `haxelib run hxcpp library.xml -Dstatic_link` from lib/sdl/ -->
             <!-- and statically link the library using something like the line below -->

@@ -838,6 +838,17 @@ extern class SDL {
     @:native('SDL_IsGameController')
     static function isGameController(joystick_index:Int):Bool;
 
+    @:native('SDL_GameControllerHasRumble')
+	static function gameControllerHasRumble(gamecontroller:GameController):Bool;
+
+	@:native('SDL_GameControllerRumble')
+	static function gameControllerRumble(gamecontroller:GameController, low_frequency_rumble:Int, high_frequency_rumble:Int, duration_ms:Int):Int;
+
+	@:native('SDL_GameControllerHasRumbleTriggers')
+	static function gameControllerHasRumbleTriggers(gamecontroller:GameController):Bool;
+
+	@:native('SDL_GameControllerRumbleTriggers')
+	static function gameControllerRumbleTriggers(gamecontroller:GameController, left_rumble:Int, right_rumble:Int, duration_ms:Int):Int;
 
 //SDL_Joystick.h
 

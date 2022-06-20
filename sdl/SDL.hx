@@ -805,7 +805,7 @@ extern class SDL {
             case SDL_SENSOR_GYRO:
                 untyped __cpp__('sensorType_ = SDL_SENSOR_GYRO;');
         }
-		var result:Int = untyped __cpp__('SDL_GameControllerGetSensorData({0}, sensorType_, data_, {1})', gamecontroller, num_values);
+        var result:Int = untyped __cpp__('SDL_GameControllerGetSensorData({0}, sensorType_, data_, {1})', gamecontroller, num_values);
         for (i in 0...num_values) {
             data[i] = untyped __cpp__('data_[{0}]', i);
         }
@@ -839,16 +839,16 @@ extern class SDL {
     static function isGameController(joystick_index:Int):Bool;
 
     @:native('SDL_GameControllerHasRumble')
-	static function gameControllerHasRumble(gamecontroller:GameController):Bool;
+    static function gameControllerHasRumble(gamecontroller:GameController):Bool;
 
-	@:native('SDL_GameControllerRumble')
-	static function gameControllerRumble(gamecontroller:GameController, low_frequency_rumble:Int, high_frequency_rumble:Int, duration_ms:Int):Int;
+    @:native('SDL_GameControllerRumble')
+    static function gameControllerRumble(gamecontroller:GameController, low_frequency_rumble:Int, high_frequency_rumble:Int, duration_ms:Int):Int;
 
-	@:native('SDL_GameControllerHasRumbleTriggers')
-	static function gameControllerHasRumbleTriggers(gamecontroller:GameController):Bool;
+    @:native('SDL_GameControllerHasRumbleTriggers')
+    static function gameControllerHasRumbleTriggers(gamecontroller:GameController):Bool;
 
-	@:native('SDL_GameControllerRumbleTriggers')
-	static function gameControllerRumbleTriggers(gamecontroller:GameController, left_rumble:Int, right_rumble:Int, duration_ms:Int):Int;
+    @:native('SDL_GameControllerRumbleTriggers')
+    static function gameControllerRumbleTriggers(gamecontroller:GameController, left_rumble:Int, right_rumble:Int, duration_ms:Int):Int;
 
 //SDL_Joystick.h
 

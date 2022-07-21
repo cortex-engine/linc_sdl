@@ -86,6 +86,7 @@
             <lib name="-lGLESv2" />
             <lib name="-lGLESv1_CM" />
             <lib name="-lOpenSLES" />
+            <lib name="-latomic" />
          </section> <!-- android -->
 
     </target>

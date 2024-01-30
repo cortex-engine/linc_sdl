@@ -1539,8 +1539,7 @@ typedef SDLTextureQuery = {
     var access: SDLTextureAccess;
 }
 
-@:enum
-abstract SDLInitFlags(Int)
+enum abstract SDLInitFlags(Int)
 from Int to Int {
 
     var SDL_INIT_TIMER             = 0x00000001;
@@ -1555,8 +1554,7 @@ from Int to Int {
 
 }
 
-@:enum
-abstract SDLHint(String)
+enum abstract SDLHint(String)
     from String to String {
 
         var SDL_HINT_FRAMEBUFFER_ACCELERATION =                 "SDL_FRAMEBUFFER_ACCELERATION";
@@ -1605,24 +1603,21 @@ abstract SDLHint(String)
 
 }
 
-@:enum
-abstract SDLWindowPos(Int)
+enum abstract SDLWindowPos(Int)
 from Int to Int {
     var SDL_WINDOWPOS_UNDEFINED = 0|0x1FFF0000;
     var SDL_WINDOWPOS_CENTERED = 0|0x2FFF0000;
 }
 
 #if android
-@:enum
-abstract SDLExternalStorageState(Int)
+enum abstract SDLExternalStorageState(Int)
 from Int to Int {
     var SDL_ANDROID_EXTERNAL_STORAGE_READ  = 0x01;
     var SDL_ANDROID_EXTERNAL_STORAGE_WRITE = 0x02;
 }
 #end
 
-@:enum
-abstract SDLLogPriority(Int)
+enum abstract SDLLogPriority(Int)
 from Int to Int {
     var SDL_LOG_PRIORITY_VERBOSE    = 1;
     var SDL_LOG_PRIORITY_DEBUG      = 2;
@@ -1633,8 +1628,7 @@ from Int to Int {
     var SDL_NUM_LOG_PRIORITIES      = 7;
 }
 
-@:enum
-abstract SDLLogCategory(Int)
+enum abstract SDLLogCategory(Int)
 from Int to Int {
     var SDL_LOG_CATEGORY_APPLICATION = 0;
     var SDL_LOG_CATEGORY_ERROR       = 1;
@@ -1658,8 +1652,7 @@ from Int to Int {
     var SDL_LOG_CATEGORY_CUSTOM      = 19;
 }
 
-@:enum
-abstract SDLRendererFlags(Int)
+enum abstract SDLRendererFlags(Int)
 from Int to Int {
 
     var SDL_RENDERER_SOFTWARE       = 0x00000001;       /**< The renderer is a software fallback */
@@ -1671,8 +1664,7 @@ from Int to Int {
                                                           rendering to texture */
 }
 
-@:enum
-abstract SDLBlendMode(Int)
+enum abstract SDLBlendMode(Int)
 from Int to Int {
 
     var SDL_BLENDMODE_NONE = 0x00000000;     /**< no blending
@@ -1688,8 +1680,7 @@ from Int to Int {
                                               dstA = dstA */
 }
 
-@:enum
-abstract SDLPixelFormat(Int)
+enum abstract SDLPixelFormat(Int)
 from Int to Int {
     var SDL_PIXELFORMAT_UNKNOWN     = 0x00000000;
     var SDL_PIXELFORMAT_INDEX1LSB   = 0x11100100;
@@ -1731,8 +1722,7 @@ from Int to Int {
     var SDL_PIXELFORMAT_NV21        = 0x3132564E;
 }
 
-@:enum
-abstract SDLTextureAccess(Int)
+enum abstract SDLTextureAccess(Int)
 from Int to Int {
     var SDL_TEXTUREACCESS_STATIC    = 0;  /**< Changes rarely, not lockable */
     var SDL_TEXTUREACCESS_STREAMING = 1;  /**< Changes frequently, lockable */
@@ -1740,16 +1730,14 @@ from Int to Int {
 }
 
 
-@:enum
-abstract SDLThreadPriority(Int)
+enum abstract SDLThreadPriority(Int)
 from Int to Int {
     var SDL_THREAD_PRIORITY_LOW = 0;
     var SDL_THREAD_PRIORITY_NORMAL = 1;
     var SDL_THREAD_PRIORITY_HIGH = 2;
 }
 
-@:enum
-abstract SDLRenderFlip(Int)
+enum abstract SDLRenderFlip(Int)
 from Int to Int {
     var SDL_FLIP_NONE = 0x00000000;
     var SDL_FLIP_HORIZONTAL = 0x00000001;
@@ -1758,8 +1746,7 @@ from Int to Int {
 
 
 
-@:enum
-abstract SDLEventState(Int)
+enum abstract SDLEventState(Int)
 from Int to Int {
     var SDL_QUERY = -1;
     var SDL_IGNORE = 0;
@@ -1768,8 +1755,7 @@ from Int to Int {
 }
 
 
-@:enum
-abstract SDLGLAttr(Int)
+enum abstract SDLGLAttr(Int)
 from Int to Int {
     var SDL_GL_RED_SIZE                     = 0;
     var SDL_GL_GREEN_SIZE                   = 1;
@@ -1797,16 +1783,14 @@ from Int to Int {
     var SDL_GL_FRAMEBUFFER_SRGB_CAPABLE     = 23;
 }
 
-@:enum
-abstract SDLGLprofile(Int)
+enum abstract SDLGLprofile(Int)
 from Int to Int {
     var SDL_GL_CONTEXT_PROFILE_CORE           = 0x0001;
     var SDL_GL_CONTEXT_PROFILE_COMPATIBILITY  = 0x0002;
     var SDL_GL_CONTEXT_PROFILE_ES             = 0x0004;
 }
 
-@:enum
-abstract SDLGameControllerButton(Int)
+enum abstract SDLGameControllerButton(Int)
 from Int to Int {
     var SDL_CONTROLLER_BUTTON_INVALID       = -1;
     var SDL_CONTROLLER_BUTTON_A             = 0;
@@ -1829,8 +1813,7 @@ from Int to Int {
 
 
 
-@:enum
-abstract SDLGameControllerAxis(Int)
+enum abstract SDLGameControllerAxis(Int)
 from Int to Int {
     var SDL_CONTROLLER_AXIS_INVALID         = -1;
     var SDL_CONTROLLER_AXIS_LEFTX           = 0;
@@ -1842,8 +1825,7 @@ from Int to Int {
     var SDL_CONTROLLER_AXIS_MAX             = 6;
 }
 
-@:enum
-abstract SDLSensorType(Int)
+enum abstract SDLSensorType(Int)
 from Int to Int
 {
     var SDL_SENSOR_INVALID = -1;        /**< Returned for an invalid sensor */
@@ -1853,24 +1835,21 @@ from Int to Int
 }
 
 
-@:enum
-abstract SDLEventAction(Int)
+enum abstract SDLEventAction(Int)
 from Int to Int {
     var SDL_ADDEVENT  = 0;
     var SDL_PEEKEVENT = 1;
     var SDL_GETEVENT  = 2;
 }
 
-@:enum
-abstract SDLMessageBoxFlags(Int)
+enum abstract SDLMessageBoxFlags(Int)
 from Int to Int {
     var SDL_MESSAGEBOX_ERROR        = 0x00000010;
     var SDL_MESSAGEBOX_WARNING      = 0x00000020;
     var SDL_MESSAGEBOX_INFORMATION  = 0x00000040;
 }
 
-@:enum
-abstract SDLKeymod(Int)
+enum abstract SDLKeymod(Int)
 from Int to Int {
     var KMOD_NONE       = 0x0000;
     var KMOD_LSHIFT     = 0x0001;
@@ -1893,8 +1872,7 @@ from Int to Int {
 
 
 
-@:enum
-abstract SDLHatValue(Int)
+enum abstract SDLHatValue(Int)
 from Int to Int {
     var SDL_HAT_CENTERED =    0x00;
     var SDL_HAT_UP =          0x01;
@@ -1908,8 +1886,7 @@ from Int to Int {
 }
 
 
-@:enum
-abstract SDLWindowEventID(Int)
+enum abstract SDLWindowEventID(Int)
 from Int to Int {
     var SDL_WINDOWEVENT_NONE          = 0;/**< Never used */
     var SDL_WINDOWEVENT_SHOWN         = 1;/**< Window has been shown */
@@ -1928,8 +1905,7 @@ from Int to Int {
     var SDL_WINDOWEVENT_CLOSE         = 14;/**< The window manager requests that the window be closed */
 }
 
-@:enum
-abstract SDLEventType(UInt)
+enum abstract SDLEventType(UInt)
 from UInt to UInt {
     var SDL_FIRSTEVENT     = 0;     /**< Unused (do not remove) */
 
@@ -2035,8 +2011,7 @@ from UInt to UInt {
 }
 
 
-@:enum
-abstract SDLSystemCursor(Int)
+enum abstract SDLSystemCursor(Int)
 from Int to Int {
     var SDL_SYSTEM_CURSOR_ARROW     = 0;   /**< Arrow */
     var SDL_SYSTEM_CURSOR_IBEAM     = 1;   /**< I-beam */
@@ -2053,8 +2028,7 @@ from Int to Int {
     var SDL_NUM_SYSTEM_CURSORS      = 12;
 }
 
-@:enum
-abstract SDLWindowFlags(Int)
+enum abstract SDLWindowFlags(Int)
 from Int to Int {
     var NONE                            = 0;                /**< fullscreen window */
     var SDL_WINDOW_FULLSCREEN           = 0x00000001;       /**< fullscreen window */

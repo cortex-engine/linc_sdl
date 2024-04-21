@@ -75,6 +75,8 @@
             <lib name="wldap32.lib" />
             <lib name="shell32.lib" />
             <lib name="comdlg32.lib" />
+            <lib name="cfgmgr32.lib" />
+            <lib name="setupapi.lib" />
         </section>
 
         <section if="android">

@@ -1126,6 +1126,9 @@ extern class SDL {
     @:native('SDL_GetWindowID')
     static function getWindowID(window:Window):UInt;
 
+    @:native('SDL_GetWindowDisplayIndex')
+    static function getWindowDisplayIndex(window:Window):Int;
+
     @:native('SDL_GetNumVideoDisplays')
     static function getNumVideoDisplays():Int;
 

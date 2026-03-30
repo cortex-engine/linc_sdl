@@ -122,7 +122,8 @@ extern class SDL {
     @:native('linc::sdl::pollEvent')
     static function pollEvent() : sdl.Event;
 
-    //:todo: int SDL_PushEvent(SDL_Event* event)
+    @:native('linc::sdl::pushUserEvent')
+    static function pushUserEvent(code:Int):Int;
 
     @:native('SDL_QuitRequested')
     static function quitRequested(): Bool;

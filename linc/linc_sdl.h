@@ -40,6 +40,7 @@ namespace linc {
             extern ::cpp::Struct<SDL_Event> waitEvent();
             extern ::cpp::Struct<SDL_Event> waitEventTimeout(int _timeout);
             extern ::String getBasePath();
+            extern int pushUserEvent(int code);
             extern ::String getPrefPath(::String org, ::String app);
             extern Dynamic GL_BindTexture(SDL_Texture* texture);
             extern int GL_GetAttribute(int attr);

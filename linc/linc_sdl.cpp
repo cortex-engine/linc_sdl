@@ -117,10 +117,21 @@ namespace linc {
         ::cpp::Struct<SDL_Event> waitEventTimeout(int _timeout) {
 
             SDL_Event event;
+            SDL_memset(&event, 0, sizeof(event));
             SDL_WaitEventTimeout(&event, _timeout);
             return event;
 
         } //waitEventTimeout
+
+        int pushUserEvent(int code) {
+
+            SDL_Event event;
+            SDL_memset(&event, 0, sizeof(event));
+            event.type = SDL_USEREVENT;
+            event.user.code = code;
+            return SDL_PushEvent(&event);
+
+        } //pushUserEvent
 
         ::String getBasePath() {
 

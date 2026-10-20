@@ -1907,6 +1907,10 @@ from Int to Int {
     var SDL_WINDOWEVENT_FOCUS_GAINED  = 12;/**< Window has gained keyboard focus */
     var SDL_WINDOWEVENT_FOCUS_LOST    = 13;/**< Window has lost keyboard focus */
     var SDL_WINDOWEVENT_CLOSE         = 14;/**< The window manager requests that the window be closed */
+    var SDL_WINDOWEVENT_TAKE_FOCUS    = 15;/**< Window is being offered a focus (SDL 2.0.5+) */
+    var SDL_WINDOWEVENT_HIT_TEST      = 16;/**< Window had a hit test that wasn't SDL_HITTEST_NORMAL (SDL 2.0.5+) */
+    var SDL_WINDOWEVENT_ICCPROF_CHANGED = 17;/**< The ICC profile of the window's display has changed (SDL 2.0.18+) */
+    var SDL_WINDOWEVENT_DISPLAY_CHANGED = 18;/**< Window has been moved to display data1 (SDL 2.0.18+) */
 }
 
 enum abstract SDLEventType(UInt)

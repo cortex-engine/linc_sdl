@@ -1577,6 +1577,8 @@ enum abstract SDLHint(String)
         var SDL_HINT_WINDOWS_ENABLE_MESSAGELOOP =               "SDL_WINDOWS_ENABLE_MESSAGELOOP";
         var SDL_HINT_GRAB_KEYBOARD =                            "SDL_GRAB_KEYBOARD";
         var SDL_HINT_MOUSE_RELATIVE_MODE_WARP =                 "SDL_MOUSE_RELATIVE_MODE_WARP";
+        var SDL_HINT_MOUSE_DOUBLE_CLICK_RADIUS =                "SDL_MOUSE_DOUBLE_CLICK_RADIUS";
+        var SDL_HINT_MOUSE_DOUBLE_CLICK_TIME =                  "SDL_MOUSE_DOUBLE_CLICK_TIME";
         var SDL_HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS =             "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS";
         var SDL_HINT_IDLE_TIMER_DISABLED =                      "SDL_IOS_IDLE_TIMER_DISABLED";
         var SDL_HINT_ORIENTATIONS =                             "SDL_IOS_ORIENTATIONS";
@@ -1611,6 +1613,12 @@ enum abstract SDLWindowPos(Int)
 from Int to Int {
     var SDL_WINDOWPOS_UNDEFINED = 0|0x1FFF0000;
     var SDL_WINDOWPOS_CENTERED = 0|0x2FFF0000;
+}
+
+/** The `which` of the mouse events SDL makes from touches: (Uint32)-1, read as -1 in the Int-typed fields. */
+enum abstract SDLMouseID(Int)
+from Int to Int {
+    var SDL_TOUCH_MOUSEID = -1;
 }
 
 #if android
@@ -1907,6 +1915,10 @@ from Int to Int {
     var SDL_WINDOWEVENT_FOCUS_GAINED  = 12;/**< Window has gained keyboard focus */
     var SDL_WINDOWEVENT_FOCUS_LOST    = 13;/**< Window has lost keyboard focus */
     var SDL_WINDOWEVENT_CLOSE         = 14;/**< The window manager requests that the window be closed */
+    var SDL_WINDOWEVENT_TAKE_FOCUS    = 15;/**< Window is being offered a focus (SDL 2.0.5+) */
+    var SDL_WINDOWEVENT_HIT_TEST      = 16;/**< Window had a hit test that wasn't SDL_HITTEST_NORMAL (SDL 2.0.5+) */
+    var SDL_WINDOWEVENT_ICCPROF_CHANGED = 17;/**< The ICC profile of the window's display has changed (SDL 2.0.18+) */
+    var SDL_WINDOWEVENT_DISPLAY_CHANGED = 18;/**< Window has been moved to display data1 (SDL 2.0.18+) */
 }
 
 enum abstract SDLEventType(UInt)

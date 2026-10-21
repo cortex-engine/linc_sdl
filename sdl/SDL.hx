@@ -1577,6 +1577,8 @@ enum abstract SDLHint(String)
         var SDL_HINT_WINDOWS_ENABLE_MESSAGELOOP =               "SDL_WINDOWS_ENABLE_MESSAGELOOP";
         var SDL_HINT_GRAB_KEYBOARD =                            "SDL_GRAB_KEYBOARD";
         var SDL_HINT_MOUSE_RELATIVE_MODE_WARP =                 "SDL_MOUSE_RELATIVE_MODE_WARP";
+        var SDL_HINT_MOUSE_DOUBLE_CLICK_RADIUS =                "SDL_MOUSE_DOUBLE_CLICK_RADIUS";
+        var SDL_HINT_MOUSE_DOUBLE_CLICK_TIME =                  "SDL_MOUSE_DOUBLE_CLICK_TIME";
         var SDL_HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS =             "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS";
         var SDL_HINT_IDLE_TIMER_DISABLED =                      "SDL_IOS_IDLE_TIMER_DISABLED";
         var SDL_HINT_ORIENTATIONS =                             "SDL_IOS_ORIENTATIONS";

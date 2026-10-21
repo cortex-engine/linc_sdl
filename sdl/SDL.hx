@@ -1613,6 +1613,12 @@ from Int to Int {
     var SDL_WINDOWPOS_CENTERED = 0|0x2FFF0000;
 }
 
+/** The `which` of the mouse events SDL makes from touches: (Uint32)-1, read as -1 in the Int-typed fields. */
+enum abstract SDLMouseID(Int)
+from Int to Int {
+    var SDL_TOUCH_MOUSEID = -1;
+}
+
 #if android
 enum abstract SDLExternalStorageState(Int)
 from Int to Int {

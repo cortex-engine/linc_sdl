@@ -227,7 +227,7 @@ extern class TouchFingerEvent {
     var y: Float;
     var dx: Float;
     var dy: Float;
-    var pressure: Int;
+    var pressure: Float;
 }
 
 @:structAccess
